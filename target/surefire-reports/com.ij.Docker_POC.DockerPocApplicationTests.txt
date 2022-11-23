@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ij.Docker_POC.DockerPocApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.745 s - in com.ij.Docker_POC.DockerPocApplicationTests
