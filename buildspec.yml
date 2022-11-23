@@ -15,17 +15,15 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - echo Repository is $REPOSITORY_URI:latest
-      - echo added
-      - sudo docker build -t spring-demo:latest .
-      - sudo docker tag spring-demo:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - echo Repository uri is $REPOSITORY_URI:latest
-      - sudo docker push $REPOSITORY_URI:latest
-      - sudo docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"demo-from-ecr-to-ecs","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
